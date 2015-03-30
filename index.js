@@ -5,6 +5,7 @@
 var csso = require("csso");
 var SourceMapGenerator = require("source-map").SourceMapGenerator;
 var loaderUtils = require("loader-utils");
+var log = require('spm-log');
 
 module.exports = function(content, map) {
 	this.cacheable && this.cacheable();
@@ -15,6 +16,13 @@ module.exports = function(content, map) {
 	var forceMinimize = query.minimize;
 	var importLoaders = parseInt(query.importLoaders, 10) || 0;
 	var minimize = typeof forceMinimize !== "undefined" ? !!forceMinimize : (this && this.minimize);
+
+  // Delete progid contained filter in css.
+  content = content.replace(/(-ms-)?filter:.+?progid:.+?[;\n]/ig, function(a, b) {
+    log.warn('css deleted', a.to.yellow.color, 'in', this.resource);
+    return '';
+  }.bind(this));
+
 	var tree = csso.parse(content, "stylesheet");
 	if(tree && minimize) {
 		tree = csso.compress(tree, query.disableStructuralMinification);
