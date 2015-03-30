@@ -1,5 +1,5 @@
 {
-	"name": "css-loader",
+	"name": "spmcss-loader",
 	"version": "0.9.1",
 	"author": "Tobias Koppers @sokra",
 	"description": "css loader module for webpack",
@@ -17,7 +17,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git@github.com:webpack/css-loader.git"
+		"url": "git@github.com:spmjs/css-loader.git"
 	},
 	"licenses": [
 		{
