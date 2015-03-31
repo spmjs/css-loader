@@ -1,6 +1,6 @@
 {
   "name": "spmcss-loader",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "author": "Tobias Koppers @sokra",
   "description": "css loader module for webpack",
   "dependencies": {
