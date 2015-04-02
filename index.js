@@ -18,7 +18,7 @@ module.exports = function(content, map) {
 	var minimize = typeof forceMinimize !== "undefined" ? !!forceMinimize : (this && this.minimize);
 
   // Delete progid contained filter in css.
-  content = content.replace(/(-ms-)?filter:.+?progid:.+?[;\n]/ig, function(a, b) {
+  content = content.replace(/(-ms-)?filter:[^;]+?progid:.+?[;\n]/ig, function(a, b) {
     log.warn('css deleted', a.to.yellow.color, 'in', this.resource);
     return '';
   }.bind(this));
